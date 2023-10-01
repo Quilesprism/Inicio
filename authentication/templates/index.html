@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Tu Título</title>
+</head>
+<body>
+    <h1>Subir un archivo CSV y generar un gráfico de barras</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file" accept=".xlsx" required>
+        <input type="submit" value="Cargar y Graficar">
+    </form>
+    <br>
+    <div>
+        {% if request.method == 'POST' %}
+            <iframe src="/static/plot.html" width="800" height="400"></iframe>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
